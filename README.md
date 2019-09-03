@@ -5,4 +5,5 @@
 
 > CSDN     个人博客地址: https://blog.csdn.net/qq_37977176/article/list/1?
 
-+ 2019.8.26 刷题数量 (1) {数据库相关 <a href='https://leetcode-cn.com/problems/combine-two-tables/'>[175. 组合两个表]</a>} , 缴纳光头群 累计罚款 10.24 
++ 2019.8.26 刷题总量 (1) {数据库相关 <a href='https://leetcode-cn.com/problems/combine-two-tables/'>[175. 组合两个表]</a>} , 缴纳光头群 累计罚款 10.24 
++ 2019.9.2 刷题总量 (4) {算法相关 <a href='https://leetcode-cn.com/problems/two-sum/'>[1. 两数之和]</a>  <a href='https://leetcode-cn.com/problems/add-two-numbers/'>[2. 两数相加]</a>  <a href='https://leetcode-cn.com/problems/palindrome-number/'>[9. 回文数]</a>} , 缴纳光头群 累计罚款 10.24 
