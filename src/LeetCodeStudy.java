@@ -1,17 +1,105 @@
 import DataStructure.ListNode;
 
-import java.util.Arrays;
+import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.Scanner;
 
 /**
  * Created by CHENT
  */
 public class LeetCodeStudy {
-    public static void main(String[] args) {
+    public static void main(String[] args) {//2147483648
+      /*  System.out.println(reverse(-123));
         System.out.println(convertx("LEETCODEISHIRING", 4));
-        int[] ss = twoSum(new int[]{3, 2, 5, 4, 1}, 6);
+        int[] ss = twoSum(new int[]{3, 2, 5, 4, 1}, 6);*/
+        ListNode aseNode = new ListNode(1);
+        aseNode.next = new ListNode(2);
+        aseNode.next.next = new ListNode(3);
+        aseNode.next.next.next = new ListNode(4);
+        aseNode.next.next.next.next = new ListNode(5);
+        aseNode.next.next.next.next.next = aseNode;
+        System.out.println(hasCycle(aseNode));
     }
+
+    public static boolean hasCycle(ListNode head) {
+        // 快慢指针判断是否有环 快指针 +2 慢指针 +1
+        ListNode fast = head, slow = head;
+        while (fast.next !=null && fast.next.next != null  ) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int findLastWordLength(String input) {
+        // 最后一个字母的位置 / 定义尾部指针从尾部匹配
+        int last = input.length() - 1;
+
+        // 找最后一个字母出现的位置 / 过滤尾部空格
+        System.out.println(input.charAt(last));
+        while (last >= 0 && input.charAt(last) == ' ') {
+            last--;
+        }
+
+        // 找最后一个字母之前的第一个空白字符 / 找到最后第二位往前追加校验
+        int pos = last - 1;
+        while (pos >= 0 && input.charAt(pos) != ' ') {
+            pos--;
+        }
+
+        return last - pos;
+    }
+
+    public static int reverse(int x) {
+        if (x >= 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(String.valueOf(x));
+            Long maxCaseOfOverflow = Long.valueOf(sb.reverse().toString());
+            if (maxCaseOfOverflow >= Integer.MAX_VALUE) {
+                return 0;
+            }
+            return maxCaseOfOverflow.intValue();
+        } else {
+            StringBuilder sb = new StringBuilder();
+            BigInteger b = new BigInteger(String.valueOf(x));
+            sb.append(b.abs().longValue());
+            String ss = sb.reverse().toString();
+            Long minCaseOfOverflow = Long.valueOf(ss);
+            if (minCaseOfOverflow > Long.valueOf(Integer.MAX_VALUE)) {
+                return 0;
+            }
+            return (int) (minCaseOfOverflow - 2 * minCaseOfOverflow);
+        }
+    }
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     * //Input: 1->2->3->4->5->NULL
+     * //Output: 5->4->3->2->1->NULL
+     */
+    public static ListNode reverseList(ListNode head) {
+        // 记录最新节点的链表节点
+        ListNode cur = head;
+        // 记录反转后的链表
+        ListNode prev = null;
+        while (cur != null) {
+            // 将最新的节点关联指向反转的链表
+            ListNode next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
+    }
+
 
     // Z 字形变换
 
@@ -99,6 +187,7 @@ public class LeetCodeStudy {
         return new String(chars);
     }
 
+
     /**
      * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
      * 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
@@ -138,18 +227,19 @@ public class LeetCodeStudy {
 
     /**
      * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
-     *
+     * <p>
      * 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
-     *
+     * <p>
      * 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
-     *
+     * <p>
      * 示例：
-     *
+     * <p>
      * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
      * 输出：7 -> 0 -> 8
      * 原因：342 + 465 = 807
-     *
+     * <p>
      * 链接：https://leetcode-cn.com/problems/add-two-numbers
+     *
      * @param l1
      * @param l2
      * @return
@@ -173,7 +263,7 @@ public class LeetCodeStudy {
             cur = cur.next;
         }
 
-        if (sum == 1){
+        if (sum == 1) {
             cur.next = new ListNode(1);
         }
 
