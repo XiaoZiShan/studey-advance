@@ -1,4 +1,5 @@
 import DataStructure.ListNode;
+import org.jetbrains.annotations.Contract;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -14,14 +15,30 @@ public class LeetCodeStudy {
         int[] ss = twoSum(new int[]{3, 2, 5, 4, 1}, 6);*/
         ListNode aseNode = new ListNode(1);
         aseNode.next = new ListNode(2);
-        aseNode.next.next = new ListNode(3);
-        aseNode.next.next.next = new ListNode(4);
-        aseNode.next.next.next.next = new ListNode(5);
-        aseNode.next.next.next.next.next = aseNode;
-        System.out.println(hasCycle(aseNode));
+        aseNode.next.next = new ListNode(4); // 1->2->4, 1->3->4
+        ListNode aseNodeTwo = new ListNode(1);
+        aseNodeTwo.next = new ListNode(3);
+        aseNodeTwo.next.next = new ListNode(4);
+        System.out.println(new  LeetCodeStudy().mergeTwoLists(aseNode,aseNodeTwo));
+    }
+
+    public  ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null ) return l2;
+        if (l2 == null ) return l1;
+
+        if (l1.val <= l2.val){
+            l1.next = mergeTwoLists(l1.next,l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists(l1,l2.next);
+            return l2;
+        }
+
+
     }
 
     public static boolean hasCycle(ListNode head) {
+        if (head == null) return false;
         // 快慢指针判断是否有环 快指针 +2 慢指针 +1
         ListNode fast = head, slow = head;
         while (fast.next !=null && fast.next.next != null  ) {
@@ -92,10 +109,10 @@ public class LeetCodeStudy {
         ListNode prev = null;
         while (cur != null) {
             // 将最新的节点关联指向反转的链表
-            ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = next;
+            ListNode next = cur.next;// 保留下一个结点
+            cur.next = prev;         // 指针反转
+            prev = cur;              // 前结点后移
+            cur = next;              // 前结点后移
         }
         return prev;
     }
@@ -161,7 +178,6 @@ public class LeetCodeStudy {
         }
         return "";
     }
-
 
     public static String convertx(String s, int numRows) {
         if (numRows == 1) return s;
