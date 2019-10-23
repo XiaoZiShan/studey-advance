@@ -10,21 +10,4 @@ public class ListNode {
         val = x;
     }
 
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        ListNode nowNode = this;
-        stringBuffer.append("[");
-
-        for (int i = 0; i < 5; i++) {
-            if (nowNode.next != null) {
-                stringBuffer.append(nowNode.val+",");
-                nowNode = nowNode.next;
-            }else {
-                stringBuffer.append(nowNode.val);
-            }
-        }
-        stringBuffer.append("]");
-        return stringBuffer.toString();
-    }
 }

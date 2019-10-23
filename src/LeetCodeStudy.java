@@ -1,9 +1,8 @@
 import DataStructure.ListNode;
-import org.jetbrains.annotations.Contract;
 
 import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.Scanner;
+import java.util.LinkedList;
 
 /**
  * Created by CHENT
@@ -13,13 +12,12 @@ public class LeetCodeStudy {
       /*  System.out.println(reverse(-123));
         System.out.println(convertx("LEETCODEISHIRING", 4));
         int[] ss = twoSum(new int[]{3, 2, 5, 4, 1}, 6);*/
-        ListNode aseNode = new ListNode(1);
-        aseNode.next = new ListNode(2);
-        aseNode.next.next = new ListNode(4); // 1->2->4, 1->3->4
-        ListNode aseNodeTwo = new ListNode(1);
-        aseNodeTwo.next = new ListNode(3);
-        aseNodeTwo.next.next = new ListNode(4);
-        System.out.println(new  LeetCodeStudy().mergeTwoLists(aseNode,aseNodeTwo));
+        ListNode aseNode = new ListNode(4);
+        aseNode.next = new ListNode(5);
+        aseNode.next.next = new ListNode(1); // 1->2->4, 1->3->4
+        aseNode.next.next.next = new ListNode(9); // 1->2->4, 1->3->4
+        deleteNode(aseNode);
+        // System.out.println(isValid("[]{}()"));
     }
 
     public  ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -51,6 +49,23 @@ public class LeetCodeStudy {
         return false;
     }
 
+    public static boolean isValid(String s) {
+        // TODO
+        HashMap<Character,Character> param = new HashMap<>();
+        param.put(')','(');
+        param.put(']','[');
+        param.put('}','{');
+        LinkedList<Character> linkedList = new LinkedList<>();
+        for(Character data:s.toCharArray()){
+            if (!param.containsKey(data)){
+                linkedList.push(data);
+            }else if (linkedList.isEmpty()|| param.get(data) != linkedList.pop()){
+                return false;
+            }
+        }
+        return linkedList.isEmpty();
+    }
+
     public static int findLastWordLength(String input) {
         // 最后一个字母的位置 / 定义尾部指针从尾部匹配
         int last = input.length() - 1;
@@ -68,6 +83,15 @@ public class LeetCodeStudy {
         }
 
         return last - pos;
+    }
+
+    public static void deleteNode(ListNode node) {// (4->5->1->9)
+        // 在没有上级节点下删除一个可删除的节点: 例如删除 节点5
+        // 将next.val 赋值给 头节点.val; (5->5->1->9)
+        node.val  = node.next.val;
+        // 赋值值后将next指针指向next的next指针; (5->1->9)
+        node.next = node.next.next;
+        System.out.println(node);
     }
 
     public static int reverse(int x) {
