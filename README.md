@@ -11,4 +11,4 @@
 ![Alt text](https://blog-cm.oss-cn-shenzhen.aliyuncs.com/leetcode/LeetCode.jpg)
 + 2019.11.1 刷题总量 (16)
 ![Alt text](https://blog-cm.oss-cn-shenzhen.aliyuncs.com/leetcode/LeetCode19.11.1.png)
-
+[get数组和链表的知识点](https://coding.imooc.com/learn/questiondetail/148583.html "慕课网 HashMap相关")  
