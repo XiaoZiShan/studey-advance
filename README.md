@@ -10,5 +10,5 @@
 + 2019.10.25 刷题总量 (10)
 ![Alt text](https://blog-cm.oss-cn-shenzhen.aliyuncs.com/leetcode/LeetCode.jpg)
 + 2019.11.1 刷题总量 (16)
-![Alt text](https://blog-cm.oss-cn-shenzhen.aliyuncs.com/leetcode/LeetCode-11.1.png)
+![Alt text](https://blog-cm.oss-cn-shenzhen.aliyuncs.com/leetcode/LeetCode19.11.1.png)
 
