@@ -1,4 +1,4 @@
-package DataStructure;
+package studey.advance.DataStructure;
 
 /**
  * Created by CHENT 链表类
