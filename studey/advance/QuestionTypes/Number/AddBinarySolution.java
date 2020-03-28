@@ -75,15 +75,16 @@ public class AddBinarySolution {
                 // 进位考虑三种情况
 
                 // 0. 如果为扩位则直接返回
-                if (shorti - 1 == -1) {
+                 if (shorti - 1 == -1) {
                     longArray[align] = '0';
                     return "1" + new String(longArray);
-                } else if (shortArray[shorti - 1] == '1' && longArray[align - 1] == '1') {
+                } else if (shortArray[shorti] == '1' && longArray[align] == '1') {
                     // 1. 进位为 双一 则为零 后进位为 一
 
                     // 一一进一 原位等零
                     longArray[align] = '0';
-                    longArray[align - 1] = 1;
+
+                    longArray[align - 1] = '1';
                 } else {
                     // 2. 进位为 一零 或 双零 则都为 一
                     longArray[align] = '1';
