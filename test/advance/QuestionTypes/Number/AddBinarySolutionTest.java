@@ -29,9 +29,8 @@ public class AddBinarySolutionTest {
 
     @Test
     void addBinary(){
-        /*Assertions.assertEquals("100",addBinarySolution.addBinary("100",null));
         Assertions.assertEquals("1010",addBinarySolution.addBinary("100","110"));
-        Assertions.assertEquals("11010011",addBinarySolution.addBinary("1100","11000111"));*/
+        Assertions.assertEquals("11010011",addBinarySolution.addBinary("1100","11000111"));
         Assertions.assertEquals("10101001101", addBinarySolution.addBinary("10011010010", "1111011"));
         Assertions.assertEquals("100110110",addBinarySolution.addBinary("11011110","1011000"));
     }
