@@ -1,6 +1,6 @@
-package advance.QuestionTypes.Linked;
+package studey.advance.QuestionTypes.Linked;
 
-import advance.DataStructure.ListNode;
+import studey.advance.DataStructure.ListNode;;
 
 import java.util.HashSet;
 

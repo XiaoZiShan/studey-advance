@@ -1,6 +1,8 @@
 package advance.QuestionTypes.Array;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import studey.advance.QuestionTypes.Array.RemoveDuplicatesFromSortedArrayIiSolution;
 
 /**
  * Created by 刷题使我快乐,自律使我自由 !
@@ -12,14 +14,14 @@ import org.junit.jupiter.api.Test;
 
  不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
 
- 示例 1:
+ 示例1:
 
  给定 nums = [1,1,1,2,2,3],
 
  函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。
 
  你不需要考虑数组中超出新长度后面的元素。
- 示例 2:
+ 示例2:
 
  给定 nums = [0,0,1,1,1,1,2,3,3],
 
@@ -40,17 +42,17 @@ import org.junit.jupiter.api.Test;
  // 在函数里修改输入数组对于调用者是可见的。
  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。
  for (int i = 0; i < len; i++) {
-     print(nums[i]);
+     print(nums[i]);
  }
 
  *
  */
-public class RemoveDuplicatesFromSortedArrayIiTest extends RemoveDuplicatesFromSortedArrayIiSolution{
+public class RemoveDuplicatesFromSortedArrayIiTest extends RemoveDuplicatesFromSortedArrayIiSolution {
 
     @Test
     void removeDuplicates_QuickSlowPointer(){
-     /*   Assertions.assertEquals(7,removeDuplicates_QuickSlowPointer(new int[]{0,0,1,1,1,1,2,3,3}));
-        Assertions.assertEquals(6,removeDuplicates_QuickSlowPointer(new int[]{111,222,333}));
-        Assertions.assertEquals(5,removeDuplicates_QuickSlowPointer(new int[]{1,1,1,2,2,3}));*/
+//        Assertions.assertEquals(7,removeDuplicates_QuickSlowPointer(new int[]{0,0,1,1,1,1,2,3,3}));
+//        Assertions.assertEquals(6,removeDuplicates_QuickSlowPointer(new int[]{111,222,333}));
+//        Assertions.assertEquals(5,removeDuplicates_QuickSlowPointer(new int[]{1,1,1,2,2,3}));
     }
 }

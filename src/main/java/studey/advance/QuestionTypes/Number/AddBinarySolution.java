@@ -1,4 +1,4 @@
-package advance.QuestionTypes.Number;
+package studey.advance.QuestionTypes.Number;
 
 /**
  * Created by 刷题使我快乐,自律使我自由 !

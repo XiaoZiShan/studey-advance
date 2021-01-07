@@ -1,8 +1,9 @@
 package advance.QuestionTypes.Linked;
 
-import advance.DataStructure.ListNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import studey.advance.DataStructure.ListNode;
+import studey.advance.QuestionTypes.Linked.LinkedListCycleSolution;
 
 /**
  * Created by 刷题使我快乐,自律使我自由 !
@@ -42,7 +43,7 @@ import org.junit.jupiter.api.Test;
  你能用 O(1)（即，常量）内存解决此问题吗？
  *
  */
-public class LinkedListCycleSolutionTest extends LinkedListCycleSolution{
+ class LinkedListCycleSolutionTest extends LinkedListCycleSolution {
 
         @Test
         void hasCycle_Set(){

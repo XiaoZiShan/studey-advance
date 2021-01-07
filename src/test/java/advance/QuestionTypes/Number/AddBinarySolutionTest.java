@@ -2,6 +2,7 @@ package advance.QuestionTypes.Number;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import studey.advance.QuestionTypes.Number.AddBinarySolution;
 
 
 /**
@@ -31,7 +32,7 @@ import org.junit.jupiter.api.Test;
  */
 
 
-public class AddBinarySolutionTest extends AddBinarySolution{
+public class AddBinarySolutionTest extends AddBinarySolution {
 
     @Test
     void addBinary(){

@@ -1,4 +1,4 @@
-package advance.QuestionTypes.Array;
+package studey.advance.QuestionTypes.Array;
 
 /**
  * Created by 刷题使我快乐,自律使我自由 !

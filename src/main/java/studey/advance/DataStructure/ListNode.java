@@ -1,8 +1,8 @@
-package advance.DataStructure;
+package studey.advance.DataStructure;
 
 
 /**
- * Created by CHENT 链表类
+ * Created by  链表类
  */
 public class ListNode {
     public int val;
