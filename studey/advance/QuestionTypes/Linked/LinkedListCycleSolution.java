@@ -11,7 +11,7 @@ public class LinkedListCycleSolution {
 
     public boolean hasCycle_Set(ListNode head) {
 
-        // 如果入参链表过短则不存在环
+        // 如果入参链表过短则不存在环 o(log n)
         if (head == null || head.next == null) {
             return false;
         }
