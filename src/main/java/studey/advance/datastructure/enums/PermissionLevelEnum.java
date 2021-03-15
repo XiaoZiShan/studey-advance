@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 权限的层级关系Enum
  */
-public enum PermissionLevelEnum implements java.studey.advance.DataStructure.Enums.BasicEnum {
+public enum PermissionLevelEnum implements BasicEnum {
     PERMISSION_MENU(1, "权限菜单"),
     FINE_GRIT_PERMISSION(2, "细粒度权限");
 

@@ -16,6 +16,7 @@
     + QuestionTypes  （LeetCode 题目解法）
 + test.java.advance
     + BaseArithmetic （基础算法Demo TestCase）
+    + DataStructure  （数据结构Demo TestCase）
     + QuestionTypes  （LeetCode 题目解法 TestCase）
     
 > **刷题记录**

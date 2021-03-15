@@ -1,4 +1,4 @@
-package java.studey.advance.DataStructure.Enums;
+package studey.advance.datastructure.enums;
 
 public interface BasicEnum {
 	Integer getCode();
