@@ -16,7 +16,7 @@ import java.util.List;
 public class MultNode {
     private Integer id;
     private String userName;
-    private List<RoleNode> roleNode;
+    private List<RoleNode> roleNode = new ArrayList<>(1);
 
 
     @Data
@@ -26,7 +26,7 @@ public class MultNode {
         private List<Integer> parentIds;
         private Boolean areParent;
         private PermissionNode permission;
-        private List<RoleNode> children = new ArrayList<>();
+        private List<RoleNode> children = new ArrayList<>(1);;
 
         public RoleNode(Integer id, String name, List<Integer> parentIds, Boolean areParent, PermissionNode permission) {
             this.id = id;
