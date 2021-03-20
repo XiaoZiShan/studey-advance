@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import studey.advance.datastructure.enums.PermissionLevelEnum;
 import studey.advance.datastructure.pojo.PermissionResource;
 import studey.advance.datastructure.tree.MultNode;
+import studey.advance.datastructure.tree.SoloNode;
 import studey.advance.datastructure.utils.JsonUtil;
 import studey.advance.questiontypes.tree.MultTreeCompleteSolution;
 
@@ -18,9 +19,10 @@ public class MultCompleteSolutionTest extends MultTreeCompleteSolution {
     void viewCompleteSoloTree() {
 
 
-        List<MultNode.PermissionNode> permissionNodes = new ArrayList<>();
+        List<SoloNode> permissionNodes = new ArrayList<>();
         MultNode.PermissionNode aWwwOperation = new MultNode.PermissionNode(Collections.singletonList(-1),1, PermissionLevelEnum.PERMISSION_MENU.getCode(),-1,Boolean.TRUE,
             new PermissionResource("A网站运营菜单","/aWebsiteOperation","A网站运营帮助...","a-website-operation","svg"));
+        permissionNodes.add(aWwwOperation);
         permissionNodes.add(new MultNode.PermissionNode(Collections.unmodifiableList(Arrays.asList(-1,1)),2, PermissionLevelEnum.PERMISSION_MENU.getCode(),1,Boolean.TRUE,
             new PermissionResource("A统计菜单","/statistics","统计帮助...","statistics","svg")));
 
@@ -37,10 +39,12 @@ public class MultCompleteSolutionTest extends MultTreeCompleteSolution {
             new PermissionResource("银行对账权限","/bankReconciliation","银行对账帮助...","bank-reconciliation","svg")));
 
         List<MultNode.RoleNode> roleNodes = new ArrayList<>();
-        MultNode.RoleNode directorNetworkOperations = new MultNode.RoleNode(1,"全网运营总监", Collections.singletonList(-1),Boolean.TRUE, null);
+        MultNode.RoleNode directorNetworkOperations = new MultNode.RoleNode(1,"全网运营总监", Collections.singletonList(-1),Boolean.TRUE, new ArrayList<>());
         roleNodes.add(directorNetworkOperations);
-        roleNodes.add(new MultNode.RoleNode(2,"A网运营总监", Collections.singletonList(1),Boolean.TRUE, aWwwOperation));
-        MultNode.RoleNode chiefAccountantGeneraLedger = new MultNode.RoleNode(3,"总账首席会计师", Collections.singletonList(-1),Boolean.TRUE, moneyGeneralLedger);
+        MultNode.RoleNode roleNodex = new MultNode.RoleNode(2,"A网运营总监", Collections.singletonList(1),Boolean.TRUE, new ArrayList<>(Collections.singletonList(aWwwOperation)));
+        roleNodes.add(roleNodex);
+
+        MultNode.RoleNode chiefAccountantGeneraLedger = new MultNode.RoleNode(3,"总账首席会计师", Collections.singletonList(-1),Boolean.TRUE, new ArrayList<>(Collections.singletonList(moneyGeneralLedger)));
         roleNodes.add(chiefAccountantGeneraLedger);
 
         List<MultNode> multNodes = new ArrayList<>();

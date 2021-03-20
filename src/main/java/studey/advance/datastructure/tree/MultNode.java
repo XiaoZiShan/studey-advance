@@ -2,6 +2,7 @@ package studey.advance.datastructure.tree;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import studey.advance.datastructure.pojo.PermissionResource;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 public class MultNode {
     private Integer id;
     private String userName;
-    private List<RoleNode> roleNode = new ArrayList<>(1);
+    private List<RoleNode> roleNodes = new ArrayList<>();
 
 
     @Data
@@ -25,26 +26,26 @@ public class MultNode {
         private String name;
         private List<Integer> parentIds;
         private Boolean areParent;
-        private PermissionNode permission;
-        private List<RoleNode> children = new ArrayList<>(1);;
+        private List<PermissionNode> permissions = new ArrayList<>();
+        private List<RoleNode> children = new ArrayList<>();;
 
-        public RoleNode(Integer id, String name, List<Integer> parentIds, Boolean areParent, PermissionNode permission) {
+        public RoleNode(Integer id, String name, List<Integer> parentIds, Boolean areParent, List<PermissionNode> permissions) {
             this.id = id;
             this.name = name;
             this.parentIds = parentIds;
             this.areParent = areParent;
-            this.permission = permission;
+            this.permissions = permissions;
         }
     }
 
-
     @Data
+    @EqualsAndHashCode(callSuper = true)
     public static class PermissionNode extends SoloNode{
         private List<Integer> parentIds;
 
         public PermissionNode(List<Integer> parentIds, Integer id, Integer permissionLevelEnum, Integer parentId, Boolean areParent, PermissionResource permissionResource) {
             super(id, permissionLevelEnum, parentId, areParent, permissionResource);
-            this.setParentId(parentId);
+            this.setParentIds(parentIds);
         }
     }
 
