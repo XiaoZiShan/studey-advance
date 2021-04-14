@@ -1,4 +1,4 @@
-package advance.basearithmetic;
+package advance.basearithmetic.recursion;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
