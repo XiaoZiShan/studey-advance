@@ -34,4 +34,25 @@ class ComparerSortRecursionTest extends ComparerSortRecursion {
         compareList.sort(new ComparerSortRecursion.RelatedWeightComparator().reversed());
         System.out.println(JsonUtil.toJson(compareList));
     }
+    
+    
+    @Test
+    void  childThreadSort() throws InterruptedException {
+        List<RelatedWeightComparable> compareToList = new ArrayList<>();
+    
+        ((Runnable) () -> {
+            compareToList.add(new RelatedWeightComparable(101,1,1));
+            compareToList.add(new RelatedWeightComparable(100,50,20));
+            compareToList.add(new RelatedWeightComparable(100,51,20));
+            compareToList.add(new RelatedWeightComparable(100,51,21));
+            System.out.println(JsonUtil.toJson(compareToList));
+        }).run();
+    
+        Thread.sleep(111);
+        System.out.println(1);
+        
+    }
+    
+    
+    
 }
