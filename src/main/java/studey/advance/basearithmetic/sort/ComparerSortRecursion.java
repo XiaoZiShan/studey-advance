@@ -1,5 +1,6 @@
 package studey.advance.basearithmetic.sort;
 
+import lombok.NoArgsConstructor;
 import studey.advance.datastructure.pojo.MbRelatedWeightResource;
 
 import java.util.Collections;
@@ -14,7 +15,7 @@ import java.util.Objects;
  */
 public class ComparerSortRecursion {
 
-    public static class RelatedWeightComparable extends MbRelatedWeightResource implements Comparable<MbRelatedWeightResource> {
+    public class RelatedWeightComparable extends MbRelatedWeightResource implements Comparable<MbRelatedWeightResource> {
 
         public RelatedWeightComparable(Integer mlRecommended, Integer throughWeight, Integer heat) {
             super(mlRecommended, throughWeight, heat);
@@ -50,6 +51,7 @@ public class ComparerSortRecursion {
         }
     }
 
+    @NoArgsConstructor
     public static class RelatedWeightComparator implements Comparator<MbRelatedWeightResource> {
 
         /**

@@ -2,11 +2,7 @@ package studey.advance.basearithmetic.sort;
 
 import studey.advance.datastructure.utils.JsonUtil;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -51,10 +47,10 @@ public class LambdaGrammarDemo extends ComparerSortRecursion {
         JsonUtil.toJson(compareToList.stream().sorted(Comparator.comparing(RelatedWeightComparable::getHeat).thenComparing(RelatedWeightComparable::getMlRecommended))
                 .map(RelatedWeightComparable::getThroughWeight).limit(3).collect(Collectors.toList()));
         
-        System.out.println(
-                JsonUtil.toJson(compareToList.stream().sorted(Comparator.comparing(RelatedWeightComparable::getHeat).thenComparing(RelatedWeightComparable::getMlRecommended)).
-                        limit(3).collect(Collectors.toMap(RelatedWeightComparable::getThroughWeight,RelatedWeightComparable::getHeat))));
-    
+          System.out.println(
+            JsonUtil.toJson(compareToList.stream().sorted(Comparator.comparing(RelatedWeightComparable::getHeat).thenComparing(RelatedWeightComparable::getMlRecommended)).
+                limit(3).collect(Collectors.toMap(RelatedWeightComparable::getThroughWeight,RelatedWeightComparable::getHeat))));
+
         compareToList.forEach(v->{
             v.setHeat(1);
             v.setThroughWeight(0);
