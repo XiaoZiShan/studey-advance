@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class ComparerSortRecursion {
 
-    public class RelatedWeightComparable extends MbRelatedWeightResource implements Comparable<MbRelatedWeightResource> {
+    public static class RelatedWeightComparable extends MbRelatedWeightResource implements Comparable<MbRelatedWeightResource> {
 
         public RelatedWeightComparable(Integer mlRecommended, Integer throughWeight, Integer heat) {
             super(mlRecommended, throughWeight, heat);

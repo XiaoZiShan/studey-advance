@@ -83,7 +83,7 @@ class ComparerSortRecursionTest extends ComparerSortRecursion {
             //compareToList.sort(new ComparerSortRecursion.RelatedWeightComparator().reversed());
             // Collections.sort(compareToList,relatedWeightComparator);
             // compareToList.sort(new ComparerSortRecursion.RelatedWeightComparator().reversed());
-            compareToList.sort(Comparator.comparing(RelatedWeightComparable::getMlRecommended));
+           // compareToList.sort(Comparator.comparing(RelatedWeightComparable::getMlRecommended));
         }
         System.out.println(JsonUtil.toJson(compareToList));
         // 迭代器和增强for循环遍历时修改会出问题
