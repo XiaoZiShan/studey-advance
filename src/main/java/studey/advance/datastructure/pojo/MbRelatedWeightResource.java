@@ -9,7 +9,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class MbRelatedWeightResource {
+public   class MbRelatedWeightResource {
 
     // 机器学习推荐值 (根据千人千面的用户画像预测)
     private Integer mlRecommended;
