@@ -58,6 +58,7 @@ public class LambdaGrammarDemo extends ComparerSortRecursion {
 
         System.out.println(JsonUtil.toJson(compareToList.stream().map(v -> {
             v.setMlRecommended(9);
+            v.setHeat(1);
             return v;
         }).collect(Collectors.toList())));
     }
