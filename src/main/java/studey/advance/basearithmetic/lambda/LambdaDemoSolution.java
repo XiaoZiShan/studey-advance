@@ -17,7 +17,7 @@ import static java.util.Comparator.comparing;
 /**
  * Created by lambda 演示
  */
-public class LambdaDemoRecursion {
+public class LambdaDemoSolution {
 
 
     interface MathOperation {
@@ -32,14 +32,14 @@ public class LambdaDemoRecursion {
     }
 
     // lambda 流api 1.1
-    public List lambdaApi(List<MbRelatedWeightResource> data){
+    public List lambdaStreamApi(List<MbRelatedWeightResource> data){
         return data.stream().sorted(comparing(MbRelatedWeightResource::getMlRecommended)
             .thenComparing(MbRelatedWeightResource::getThroughWeight)
             .thenComparing(MbRelatedWeightResource::getHeat).reversed()).collect(Collectors.toList());
     }
 
     // lambda 并行流api 1.2
-    public List lambdaParallelApi(List<MbRelatedWeightResource> data){
+    public List lambdaParallelStreamApi(List<MbRelatedWeightResource> data){
         return data.parallelStream().sorted(comparing(MbRelatedWeightResource::getMlRecommended)
             .thenComparing(MbRelatedWeightResource::getThroughWeight)
             .thenComparing(MbRelatedWeightResource::getHeat).reversed()).collect(Collectors.toList());
@@ -72,19 +72,19 @@ public class LambdaDemoRecursion {
     }
 
    // 非流api 的 lambda Runnable api 2.1
-    public static Thread getThread(){
+    public static Thread getThread() throws InterruptedException {
         return  new Thread(() -> System.out.println("In Java8, Lambda expression"));
     }
 
     // 非流api 的 lambda PathMatcher api 2.2
     public static PathMatcher getPathMatcher(){
-        return Objects::isNull;
+        return Objects::nonNull;
     }
 
     // 非流api 的 lambda PathMatcher api 2.2
     public static AfterTestExecutionCallback getAfterTestExecutionCallback() {
         return (ExtensionContext context) ->{
-            if(Objects.isNull(context)){
+            if(Objects.nonNull(context)){
                 throw new NullPointerException();
             }
         };
