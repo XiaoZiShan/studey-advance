@@ -1,6 +1,9 @@
 package studey.advance.basearithmetic.lambda;
 import javax.naming.OperationNotSupportedException;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Created by cglib lambda 操作 Bean 工具类!
@@ -13,19 +16,26 @@ public class CglibLambdaBeanStream <T> {
         throw new OperationNotSupportedException();
     }
     
-    
-    public CglibLambdaBeanStream(List t) {
-        CglibLambdaArgsBuilder.build();
+    public CglibLambdaBeanStream(T t) {
+        this.t = t;
     }
     
-    
-    public CglibLambdaBeanStream<T> map(T t) {
-        return null;
-    }
+    public <T, U extends Comparable<? super U>> Comparator<T>  ignoreing(Function<? super T, ? extends U> keyExtractor) {
+        Objects.requireNonNull(keyExtractor);
         
-    // 处理为VO
-    public T toVO() {
-       return t;
+        return comparing(keyExtractor::apply);
+    }
+    
+    public static <T, U extends Comparable<? super U>> Comparator<T> comparing(
+            Function<? super T, ? extends U> keyExtractor)
+    {
+        Objects.requireNonNull(keyExtractor);
+        return (Comparator<T> & Serializable)
+                (c1, c2) -> keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));
+    }
+    
+    public <T, U extends Comparable<? super U>> Comparator<T>  bluring(Function<? super T, ? extends U> keyExtractor) {
+        return null;
     }
     
     // 处理 Collection
