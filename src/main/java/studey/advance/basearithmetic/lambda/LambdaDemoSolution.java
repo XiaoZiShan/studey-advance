@@ -18,8 +18,8 @@ import static java.util.Comparator.comparing;
  * Created by lambda 演示
  */
 public class LambdaDemoSolution {
-
-
+ 
+    @FunctionalInterface
     interface MathOperation {
         String sayMessage(Integer b);
     }

@@ -16,7 +16,12 @@ public class CglibLambdaBeanStream <T> {
         throw new OperationNotSupportedException();
     }
     
-    public CglibLambdaBeanStream(T t) {
+    /**
+     * 构造函数
+     * @param t 转换参数
+     * @param b 是否开启懒加载
+     */
+    public CglibLambdaBeanStream(T t,Boolean b) {
         this.t = t;
     }
     

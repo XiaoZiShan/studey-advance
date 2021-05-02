@@ -23,11 +23,9 @@ public class CglibLambdaBeanStreamTest  {
     @Order(1)
     @DisplayName("bean Maping to VO")
     void toVO() {
-        CglibLambdaArgsBuilder multiLine = (Object s) -> {// 3 代码块
-            System.out.print("Hello");
-            return new CglibLambdaBeanStream<List>(null);
-        };
-        System.out.println();
+        CglibLambdaArgsBuilder<MbRelatedWeightResource, Boolean, CglibLambdaBeanStream> builder = CglibLambdaBeanStream::new;
+        CglibLambdaBeanStream clStream = builder.build(new MbRelatedWeightResource(100, 51, 20),Boolean.FALSE);
+    
     }
     
     @Test
@@ -38,8 +36,8 @@ public class CglibLambdaBeanStreamTest  {
         comparatorList.add(new MbRelatedWeightResource(100, 51, 20));
         comparatorList.add(new MbRelatedWeightResource(101, 1, 1));
         comparatorList.add(new MbRelatedWeightResource(100, 50, 20));
-        CglibLambdaBeanStream<List<MbRelatedWeightResource>> cglibLambdaBeanStream = new CglibLambdaBeanStream<List<MbRelatedWeightResource>>(comparatorList);
-        cglibLambdaBeanStream.ignoreing(MbRelatedWeightResource::getHeat);
+//        CglibLambdaBeanStream<List<MbRelatedWeightResource>> cglibLambdaBeanStream = new CglibLambdaBeanStream<List<MbRelatedWeightResource>>(comparatorList);
+//        cglibLambdaBeanStream.ignoreing(MbRelatedWeightResource::getHeat);
     }
     
     
