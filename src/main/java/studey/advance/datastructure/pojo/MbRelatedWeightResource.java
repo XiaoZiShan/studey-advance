@@ -2,6 +2,7 @@ package studey.advance.datastructure.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by 刷题使我快乐,自律使我自由 !
@@ -9,6 +10,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public   class MbRelatedWeightResource {
 
     // 机器学习推荐值 (根据千人千面的用户画像预测)
