@@ -37,10 +37,10 @@ public class AddBinarySolutionTest extends AddBinarySolution {
 
     @Test
     void addBinary(){
-        Assertions.assertEquals("1010",addBinary("100","110"));
-        Assertions.assertEquals("11010011",addBinary("1100","11000111"));
-        Assertions.assertEquals("10101001101", addBinary("10011010010", "1111011"));
-        Assertions.assertEquals("100110110",addBinary("11011110","1011000"));
+        Assertions.assertEquals("1010",super.addBinary("100","110"));
+        Assertions.assertEquals("11010011",super.addBinary("1100","11000111"));
+        Assertions.assertEquals("10101001101", super.addBinary("10011010010", "1111011"));
+        Assertions.assertEquals("100110110",super.addBinary("11011110","1011000"));
     }
 
 }
