@@ -1,5 +1,7 @@
 package studey.advance.questiontypes.api;
 
+import lombok.extern.java.Log;
+
 /**
  * 实现strStr()函数。
  *
@@ -32,6 +34,7 @@ package studey.advance.questiontypes.api;
  *
  * Created by !
  */
+@Log
 public class ImplementStrstrSolution {
     public int strStr(String haystack, String needle) {
         // 判断边界

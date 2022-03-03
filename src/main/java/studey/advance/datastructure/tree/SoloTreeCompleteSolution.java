@@ -1,6 +1,4 @@
-package studey.advance.questiontypes.tree;
-
-import studey.advance.datastructure.tree.SoloNode;
+package studey.advance.datastructure.tree;
 
 import java.util.ArrayList;
 import java.util.List;

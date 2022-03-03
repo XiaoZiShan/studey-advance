@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import studey.advance.datastructure.enums.PermissionLevelEnum;
 import studey.advance.datastructure.pojo.PermissionResource;
 import studey.advance.datastructure.tree.MultNode;
+import studey.advance.datastructure.tree.MultTreeCompleteSolution;
 import studey.advance.datastructure.tree.SoloNode;
 import studey.advance.datastructure.utils.JsonUtil;
-import studey.advance.questiontypes.tree.MultTreeCompleteSolution;
 
 import java.util.ArrayList;
 import java.util.Arrays;
