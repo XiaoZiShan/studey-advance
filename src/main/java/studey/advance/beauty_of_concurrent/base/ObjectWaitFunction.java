@@ -1,64 +1,70 @@
 package studey.advance.beauty_of_concurrent.base;
 
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.Flow.Subscriber;
 
-/**
- * Java 中的Object类是所有类的父类，基于继承机制，Java把所有类都需要的方法做到了 
- * Object 类里面，包括接下来的 wait(), notify(), Join() .
- */
+
 public class ObjectWaitFunction {
-    public void synchronizedKeywork(){
+    public void synchronizedKeywork() throws InterruptedException{
         synchronized(this){
             // doSomething
+            this.wait();
             this.doSomething();
         }
     }
 
-    public synchronized void synchronizedFunctionKeywork(){
+    public synchronized void synchronizedFunctionKeywork(Integer i) throws InterruptedException{
+        i.wait();
         // doSomething
         this.doSomething();
     } 
 
-    public void synchronizedWaitQueue() throws InterruptedException{
-        LinkedBlockingQueue<Long> queue = new LinkedBlockingQueue<>();
-        final Integer MAX_SIZE = 10;
-        
-        // 生产者线程
-        synchronized (queue){
-            // 消费队列满，则等待队空闲
-            while(queue.size() == MAX_SIZE){
-                try{
-                    // 挂起当前线程，并释放通过同步块获取的queue上的锁，
-                    // 让消费者线程可以获取该锁，然后获取队列里面的元素
-                    queue.wait();
-
-                }catch(Exception e){
-                    e.printStackTrace();
+    public static class SynchronizedWaitQueueThread implements Runnable{
+        @Override
+        public void run() {
+            LinkedBlockingQueue<Long> queue = new LinkedBlockingQueue<>();
+            final Integer MAX_SIZE = 10;
+            
+            // 生产者线程
+            synchronized (queue){
+                // 消费队列满，则等待队空闲
+                while(queue.size() == MAX_SIZE){
+                    try{
+                        // 挂起当前线程，并释放通过同步块获取的queue上的锁，
+                        // 让消费者线程可以获取该锁，然后获取队列里面的元素
+                        queue.wait();
+    
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
+                // 空闲则生成元素， 并通知消费者线程
+                queue.add(System.currentTimeMillis());
+                queue.notifyAll();
             }
-            // 空闲则生成元素， 并通知消费者线程
-            queue.add(System.currentTimeMillis());
-            queue.notifyAll();
-        }
-
-        // 消费者线程
-        synchronized (queue){
-            // 消费队列为空
-            while(queue.size() == 0){
+    
+            // 消费者线程
+            synchronized (queue){
+                // 消费队列为空
+                while(queue.size() == 0){
+                    try {
+                        // 挂起当前线程， 并释放方法内的queue上的锁，让生产者线程可以获取该锁，将生产元素放入队列
+                        queue.wait();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+    
+                // 消费元素，并通知唤醒生产者线程
                 try {
-                    // 挂起当前线程， 并释放方法内的queue上的锁，让生产者线程可以获取该锁，将生产元素放入队列
-                    queue.wait();
-                } catch (Exception e) {
+                    queue.take();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                queue.notifyAll();
             }
-
-            // 消费元素，并通知唤醒生产者线程
-            queue.take();
-            queue.notifyAll();
         }
     }
+
 
     public void doSomething(){
         System.out.println(Thread.currentThread() + "doSomething...");
@@ -124,7 +130,7 @@ public class ObjectWaitFunction {
 
     static Object obj = new Object();    
 
-    public void InterruptedExceptionByWait() throws InterruptedException{
+    public void interruptedExceptionByWait() throws InterruptedException{
         // 创建线程
         Thread threadA = new Thread(()->{
             try {
