@@ -6,7 +6,6 @@ package studey.advance.leetcode.questiontypes.array;
 public class RemoveDuplicatesFromSortedArrayIiSolution {
 
     public int removeDuplicates_QuickSlowPointer(int[] nums) {
-
         // 速率  https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/solution/javakuai-man-zhi-zhen-jie-da-by-gsmplaysnswithnx/
         int fast = 2;
         int slow = 1;
