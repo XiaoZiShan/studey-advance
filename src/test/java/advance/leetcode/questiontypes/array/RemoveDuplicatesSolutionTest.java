@@ -10,18 +10,14 @@ public class RemoveDuplicatesSolutionTest extends RemoveDuplicatesSolution{
     void removeDuplicatesByMyOneTest(){
         int[] paramCaseOne = new int[]{1,1, 2,2,2, 3,3,3};
         int[] targetCaseOne = new int[]{1,2,3};
+        Assertions.assertEquals(targetCaseOne.length, super.removeDuplicatesByMyOne(paramCaseOne,targetCaseOne));
 
-        Assertions.assertEquals(targetCaseOne.length, removeDuplicatesByMyOne(paramCaseOne));
-        this.checkAfterArray(targetCaseOne, paramCaseOne);
         int[] paramCaseTwo = new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3};
         int[] targetCaseTwo = new int[]{0,1,2,3};
-        Assertions.assertEquals(targetCaseTwo.length, removeDuplicatesByMyOne(targetCaseTwo));
-        this.checkAfterArray(targetCaseTwo,paramCaseTwo);
-    }
+        Assertions.assertEquals(targetCaseTwo.length, super.removeDuplicatesByMyOne(paramCaseTwo,targetCaseTwo));
 
-    void checkAfterArray(int[] target,int[] after){
-        for (int i = 0; i < after.length; i++) {
-            Assertions.assertEquals(after[i] , target[i]);
-        }
+        int[] paramCaseThree = new int[]{1,1,2};
+        int[] targetCaseThree = new int[]{1,2};
+        Assertions.assertEquals(targetCaseThree.length, super.removeDuplicatesByMyOne(paramCaseThree,targetCaseThree));
     }
 }
