@@ -3,9 +3,9 @@ package studey.advance.leetcode.questiontypes.array;
 /**
  * Created by 刷题使我快乐,自律使我自由 !
  */
-public class RemoveDuplicatesFromSortedArrayIiSolution {
+public class RemoveDuplicatesFromSortedArraySolution {
 
-    public int removeDuplicates_QuickSlowPointer(int[] nums) {
+    protected int removeDuplicates_QuickSlowPointer(int[] nums) {
         // 速率  https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/solution/javakuai-man-zhi-zhen-jie-da-by-gsmplaysnswithnx/
         int fast = 2;
         int slow = 1;

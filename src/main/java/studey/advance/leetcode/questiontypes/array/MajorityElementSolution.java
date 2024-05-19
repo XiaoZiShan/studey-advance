@@ -7,8 +7,8 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 /**
- * @see https://leetcode.cn/problems/majority-element/description/?envType=study-plan-v2&envId=top-interview-150
- * @apiNote 169.多数元素  
+ * @see <a href="https://leetcode.cn/problems/majority-element/description/?envType=study-plan-v2&envId=top-interview-150">多数元素</a>
+ * @apiNote 169.多数元素
     给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
 
     你可以假设数组是非空的，并且给定的数组总是存在多数元素。
@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 
     输入：nums = [2,2,1,1,1,2,2]
     输出：2
-    
+
 
     提示：
     n == nums.length
     1 <= n <= 5 * 104
     -109 <= nums[i] <= 109
-    
+
 
     进阶：尝试设计时间复杂度为 O(n)、空间复杂度为 O(1) 的算法解决此问题。
 
@@ -60,12 +60,12 @@ public class MajorityElementSolution {
     /**
      * @apiNote 解法2.数组排序法  根据题目要求, 只要出现的超过二分之一就属于多数, 那么就只寻找超过一半, 如果超过就是多数
      * 因此先排序数组, 然后取中间值, 在排序后中间值能代表大多数.
-     * @category 空间复杂度 51.79MB  55.46% 
+     * @category 空间复杂度 51.79MB  55.46%
      * @category 时间复杂度 2ms 62.42%
      *       n == nums.length
      *       1 <= n <= 5 * 104
-     *      -109 <= nums[i] <= 109 
-     */ 
+     *      -109 <= nums[i] <= 109
+     */
     public int majorityElementByMyTwo(int[] nums) {
         Arrays.sort(nums);
         // tips: 数组长度/2 只返回能除净的数,同时下标也没有-1,
@@ -87,8 +87,7 @@ public class MajorityElementSolution {
         当 票数 votes 等于 0 ，则假设当前数字 num 是众数。
         当 num = x 时，票数 votes 自增 1 ；当 num != x 时，票数 votes 自减 1 。
         返回值： 返回 x 即可。
-
-       @see 链接：https://leetcode.cn/problems/majority-element/solutions/2362000/169-duo-shu-yuan-su-mo-er-tou-piao-qing-ledrh/
+     * @see <a href="https://leetcode.cn/problems/majority-element/solutions/2362000/169-duo-shu-yuan-su-mo-er-tou-piao-qing-ledrh/">摩尔投票</a>
      * @category 1ms 99%    时间复杂度 O(N) ： NNN 为数组 nums 长度。
      * @category 52MB 9.2%  空间复杂度 O(1) ： votes 变量使用常数大小的额外空间。
      */
@@ -99,12 +98,6 @@ public class MajorityElementSolution {
             votes += num == x ? 1 : -1;
         }
         return x;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(5/2);
-        System.out.println(3/2);
-        System.out.println(11/2);
     }
 
 }
