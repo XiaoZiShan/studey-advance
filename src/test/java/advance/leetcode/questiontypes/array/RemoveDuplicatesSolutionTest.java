@@ -20,4 +20,34 @@ public class RemoveDuplicatesSolutionTest extends RemoveDuplicatesSolution{
         int[] targetCaseThree = new int[]{1,2};
         Assertions.assertEquals(targetCaseThree.length, super.removeDuplicatesByMyOne(paramCaseThree,targetCaseThree));
     }
+
+    @Test
+    void removeDuplicatesByMyTwoTest(){
+        int[] paramCaseOne = new int[]{1,1, 2,2,2, 3,3,3};
+        int[] targetCaseOne = new int[]{1,2,3};
+        Assertions.assertEquals(targetCaseOne.length, super.removeDuplicatesByMyTwo(paramCaseOne,targetCaseOne));
+
+        int[] paramCaseTwo = new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3};
+        int[] targetCaseTwo = new int[]{0,1,2,3};
+        Assertions.assertEquals(targetCaseTwo.length, super.removeDuplicatesByMyTwo(paramCaseTwo,targetCaseTwo));
+
+        int[] paramCaseThree = new int[]{1,1,2};
+        int[] targetCaseThree = new int[]{1,2};
+        Assertions.assertEquals(targetCaseThree.length, super.removeDuplicatesByMyTwo(paramCaseThree,targetCaseThree));
+    }
+
+    @Test
+    void removeDuplicatesByExpertOneTest(){
+        int[] paramCaseOne = new int[]{1,1, 2,2,2, 3,3,3};
+        int[] targetCaseOne = new int[]{1,2,3};
+        Assertions.assertEquals(targetCaseOne.length, super.removeDuplicatesByExpertOne(paramCaseOne,targetCaseOne));
+
+        int[] paramCaseTwo = new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3};
+        int[] targetCaseTwo = new int[]{0,1,2,3};
+        Assertions.assertEquals(targetCaseTwo.length, super.removeDuplicatesByExpertOne(paramCaseTwo,targetCaseTwo));
+
+        int[] paramCaseThree = new int[]{1,1,2};
+        int[] targetCaseThree = new int[]{1,2};
+        Assertions.assertEquals(targetCaseThree.length, super.removeDuplicatesByExpertOne(paramCaseThree,targetCaseThree));
+    }
 }

@@ -13,7 +13,7 @@ public class RemoveDuplicatesFromSortedArraySolution {
         for(; fast<nums.length; fast++) {
             // 判重
             if(nums[fast] != nums[slow-max+1]) {
-                slow++;
+                slow++;       
                 // 修正
                 nums[slow] = nums[fast];
             }
