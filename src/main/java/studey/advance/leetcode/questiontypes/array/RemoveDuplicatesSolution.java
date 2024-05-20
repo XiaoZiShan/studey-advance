@@ -2,13 +2,8 @@ package studey.advance.leetcode.questiontypes.array;
 
 import org.junit.jupiter.api.Assertions;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * @see <a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/?envType=study-plan-v2&envId=top-interview-150">删除有序数组中的重复项</a>
@@ -59,8 +54,8 @@ public class RemoveDuplicatesSolution {
 
     /**
      * @apiNote 解法1.遍历全部元素放入 LinkedHashSet,将Set个数输出并且将去重的结果覆盖.
-     * @category 空间复杂度 3ms 7.67%
-     * @category 时间复杂度 44.01MB 15.66%
+     * @category 空间复杂度 44.01MB 15.66%
+     * @category 时间复杂度 3ms 7.67%
      */
     public int removeDuplicatesByMyOne(int[] nums, int[] targetNums) {
         // 1.1 Set去重
@@ -81,12 +76,51 @@ public class RemoveDuplicatesSolution {
     }
 
     /**
-     * @apiNote 解法2. 使用快慢指针的方式进行
-     * @category 空间复杂度 null
-     * @category 时间复杂度 null
+     * @apiNote 解法2. 使用快慢指针的方式对非严格递增排序的数组进行去重, 
+     * fast index 与 slow index如果索引值相等, fast 则向前匹配到不相等则停下, 
+     * 反之下一轮 slow 则与 fast, slow ++后下标值等于 fast 的下标值. 
+     * 结束条件, fast 指针等于数组长度之后返回 slow 指针+1.
+     * @category 空间复杂度 43.77MB 82.62%
+     * @category 时间复杂度 0ms 100.00%
      */
     public int removeDuplicatesByMyTwo(int[] nums, int[] targetNums) {
-       return 1;
+        int fast = 1, slow = 0; 
+        // 2.1 结束条件, fast 指针等于数组长度之后返回 slow 指针+1.
+        for (;fast < nums.length;) {
+            if (nums[slow] == nums[fast]) {
+                // 2.2 fast index 与 slow index如果索引值相等, fast 则向前匹配到不相等则停下
+                fast ++;
+            } else {
+                // 2.3 反之下一轮 slow 则与 fast, slow ++后下标值等于 fast 的下标值.
+                slow ++;
+                nums[slow] = nums[fast];
+            }
+        }
+
+        this.checkAfterArray(nums,targetNums); // todo LeetCode 运行时剔除该行
+        return slow+1;
+    }
+
+    /**
+     * @apiNote 解法3. 使用pre 来替代慢指针, 增加来赋值操作的次数, 不太容易维护.
+     * @category 空间复杂度 43.78MB 80.51%
+     * @category 时间复杂度 0ms 100.00%
+     */
+    public int removeDuplicatesByExpertOne(int[] nums, int[] targetNums) {
+        // 3.1 声明计数器以及 pre 变量 (用来接受上一轮的值), i 就是快指针
+        int count = 0;
+        int pre = Integer.MIN_VALUE;
+        // 3.2 结束条件, 入参数组被遍历完成
+        for (int i = 0; i < nums.length; i++) {
+            // 3.3 如果上一轮的值不等于遍历索引, 计数器自增并且下一轮的索引赋值.
+            if(nums[i] != pre) {
+                nums[count++] = nums[i];
+                pre = nums[i];
+            }
+        }
+
+        this.checkAfterArray(nums,targetNums); // todo LeetCode 运行时剔除该行
+        return count;
     }
 
     private void checkAfterArray(int[] after, int[] target){
