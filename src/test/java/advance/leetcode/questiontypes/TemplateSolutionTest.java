@@ -1,8 +1,9 @@
 package advance.leetcode.questiontypes;
 
+
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import studey.advance.leetcode.questiontypes.TemplateSolution;
 
 public class TemplateSolutionTest extends TemplateSolution{

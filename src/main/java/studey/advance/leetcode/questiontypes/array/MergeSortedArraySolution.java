@@ -1,5 +1,7 @@
 package studey.advance.leetcode.questiontypes.array;
 
+import org.junit.jupiter.api.Assertions;
+
 /**
  * @see <a href="https://leetcode.cn/problems/merge-sorted-array/">合并两个有序数组</a>
  * @apiNote 88. 合并两个有序数组
@@ -48,14 +50,38 @@ nums2.length == n
 public class MergeSortedArraySolution { 
     
     /**
-     * @apiNote 解法1. 
-     * @category 空间复杂度 0MB 0.00%
-     * @category 时间复杂度 0ms 0.00%
+     * @apiNote 解法1. n(log n) 双层for循环合并 
+     * @category 空间复杂度 0MB 0.00% 
+     * @category 时间复杂度 0ms 0.00% O(log n)
      */
-    public int mergeSortedArrayByMyOne(int[] nums1, int m, int[] nums2, int n){ 
-        return 1;
-    }
+    public void mergeSortedArrayByMyOne(int[] nums1, int m, int[] nums2, int n,int[] target){ 
+        // 1.1 先判断边界, 如果 n 或 m 为0, 返回 nums[1] 为1.
+        int[] errorArray = {};
+        if(nums2 == errorArray || nums1 == errorArray){
+            nums1[0] = 1;
+            return;
+        }
+        int recard = 0;
+        boolean isOver = false;
+        // 1.2 双层for循环遍历
+        for (int j = 0; j < nums2.length; j++) {
+            for (int i = 0; i < nums1.length; i++) {
+                // 1.3 如果 nums2 当前元素大于或等于则后续元素后移, 将当前元素插入, 并且记录下标
+                // 1.4 根据上次插入的下标再次循环, 如果当前元素则直接插入, 并且记录下标
+                if (nums2[j] >= nums1[i] && i != nums1.length -1){
+                    recard = i+1;
+                    isOver = true;
+                    nums1[i] = nums1[i+1];        
+                }        
+            }
+            if(isOver){
+                nums1[recard] = nums2[j];
+                isOver = false;
+            }
+        }
+        this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
 
+    }
 
     /**
      * @apiNote 解法2..
@@ -64,5 +90,11 @@ public class MergeSortedArraySolution {
      */
     public int mergeSortedArrayByExpertOne(int[] nums1, int m, int[] nums2, int n){ 
         return 2;
+    }
+
+    private void checkAfterArray(int[] after, int[] target){
+        for (int i = 0; i < target.length; i++) {
+            Assertions.assertEquals(after[i] , target[i]);
+        }
     }
 }
