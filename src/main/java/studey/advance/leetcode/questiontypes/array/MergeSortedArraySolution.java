@@ -80,7 +80,6 @@ public class MergeSortedArraySolution {
             }
         }
         this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
-
     }
 
     /**
