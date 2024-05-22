@@ -1,5 +1,10 @@
 package studey.advance.leetcode.questiontypes.array;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 
 /**
@@ -83,12 +88,44 @@ public class MergeSortedArraySolution {
     }
 
     /**
-     * @apiNote 解法2..
-     * @category 空间复杂度 0MB 0.00%
-     * @category 时间复杂度 0ms 0.00%
+     * @apiNote 解法2. 将数组nums2直接添加到nums1, 然后对nums1进行排序.
+     * @category 空间复杂度 41.16MB 67.64%
+     * @category 时间复杂度 1ms 28.17%
      */
-    public int mergeSortedArrayByExpertOne(int[] nums1, int m, int[] nums2, int n){ 
-        return 2;
+    public void mergeSortedArrayByMyTwo(int[] nums1, int m, int[] nums2, int n,int[] target){ 
+          // 2.1 将nums1 与 nums2 装入ArrayList
+          List<Integer> list = new ArrayList<>();
+          // 2.2 nums1 与 nums2的元素根据 m,n 数量装填.
+          for(int i = 0;i < m;i++){
+              list.add(nums1[i]);
+          }
+  
+          for(int j = 0;j < n;j++){
+              list.add(nums2[j]);
+          }
+          // 2.3 将ArraysList调用sort排序
+          Collections.sort(list);
+          // 2.4 将排序后的元素覆盖 nums1, end
+          for(int x = 0; x < nums1.length; x++){
+              nums1[x] = list.get(x);
+          }
+          this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
+    }
+
+
+    /**
+     * @apiNote 解法3. 将数组nums2直接添加到nums1, 然后对nums1进行排序.
+     * @category 空间复杂度 41.16MB 67.64%
+     * @category 时间复杂度 1ms 28.17%
+     */
+    public void mergeSortedArrayByExpertOne(int[] nums1, int m, int[] nums2, int n,int[] target){ 
+        // 3.1将nums2的元素添加到nums1的后面, 替代原先为0的元素.
+        for(int i = 0;i != n; i++){
+            nums1[m+i] = nums2[i];
+        }
+        // 3.2对nums1进行排序
+        Arrays.sort(nums1);
+        this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
     }
 
     private void checkAfterArray(int[] after, int[] target){
