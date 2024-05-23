@@ -55,11 +55,11 @@ nums2.length == n
 public class MergeSortedArraySolution { 
     
     /**
-     * @apiNote 解法1. n(log n) 双层for循环合并 
-     * @category 空间复杂度 0MB 0.00% 
-     * @category 时间复杂度 0ms 0.00% O(log n)
+     * @apiNote 解法1. 双指针从前往后， 下次试试不用容器并且调试成功
+     * @category 空间复杂度 0MB 0.00%  
+     * @category 时间复杂度 0ms 0.00% 
      */
-    public void mergeSortedArrayByMyOne(int[] nums1, int m, int[] nums2, int n,int[] target){ 
+    public void mergeSortedArrayByMyOneFailed(int[] nums1, int m, int[] nums2, int n,int[] target){ 
         // 1.1 先判断边界, 如果 n 或 m 为0, 返回 nums[1] 为1.
         int[] errorArray = {};
         if(nums2 == errorArray || nums1 == errorArray){
@@ -76,7 +76,7 @@ public class MergeSortedArraySolution {
                 if (nums2[j] >= nums1[i] && i != nums1.length -1){
                     recard = i+1;
                     isOver = true;
-                    nums1[i] = nums1[i+1];        
+                    nums1[i+1] = nums1[i+2];        
                 }        
             }
             if(isOver){
@@ -89,8 +89,8 @@ public class MergeSortedArraySolution {
 
     /**
      * @apiNote 解法2. 将数组nums2直接添加到nums1, 然后对nums1进行排序.
-     * @category 空间复杂度 41.16MB 67.64%
-     * @category 时间复杂度 1ms 28.17%
+     * @category 空间复杂度 41.43MB 5.59% O(1)  
+     * @category 时间复杂度 1ms 28.17% O((n+m)*log(n+m))
      */
     public void mergeSortedArrayByMyTwo(int[] nums1, int m, int[] nums2, int n,int[] target){ 
           // 2.1 将nums1 与 nums2 装入ArrayList
@@ -115,16 +115,37 @@ public class MergeSortedArraySolution {
 
     /**
      * @apiNote 解法3. 将数组nums2直接添加到nums1, 然后对nums1进行排序.
-     * @category 空间复杂度 41.16MB 67.64%
-     * @category 时间复杂度 1ms 28.17%
+     * @category 空间复杂度 41.16MB 67.64%  O(1)   
+     * @category 时间复杂度 1ms 28.17% O((n+m)*log(n+m)) O(1)
      */
     public void mergeSortedArrayByExpertOne(int[] nums1, int m, int[] nums2, int n,int[] target){ 
         // 3.1将nums2的元素添加到nums1的后面, 替代原先为0的元素.
         for(int i = 0;i != n; i++){
             nums1[m+i] = nums2[i];
         }
+        // System.arraycopy(nums2, 0, nums1, m, n); 作用同等于上行
         // 3.2对nums1进行排序
         Arrays.sort(nums1);
+        this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
+    }
+
+    /*
+     * @apiNote 解法3. 逆向双指针
+     * @category 空间复杂度 41.16MB 67.64%  O（1）
+     * @category 时间复杂度 1ms 28.17%  O(1) O（n+m）
+     */
+    public void mergeSortedArrayByExpertTwo(int[] nums1, int m, int[] nums2, int n,int[] target){ 
+        int i = nums1.length - 1;
+        while (n > 0) {
+            if (m > 0 && nums1[m - 1] > nums2[n - 1]) {
+                nums1[i--] = nums1[m - 1];
+                m--;
+            } else {
+                nums1[i--] = nums2[n - 1];
+                n--;
+            }
+        }
+
         this.checkAfterArray(nums1,target); // todo LeetCode 运行时剔除该行
     }
 
@@ -133,4 +154,5 @@ public class MergeSortedArraySolution {
             Assertions.assertEquals(after[i] , target[i]);
         }
     }
+
 }
