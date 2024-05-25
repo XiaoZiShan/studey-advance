@@ -7,14 +7,13 @@ import java.math.BigInteger;
 //  * @apiNote -1 Leetcode todo 题目名称
 //  * 
 //  */
-// public class TemplateSolution { 
-    
+// public class TemplateSolution {     
 //     /**
 //      * @apiNote 解法1. 
 //      * @category 空间复杂度 0MB 0.00%
 //      * @category 时间复杂度 0ms 0.00%
 //      */
-//     public int TemplateByMyOne(int param){ 
+//     public int templateByMyOne(int param){ 
 //         return 1;
 //     }
 
@@ -23,7 +22,7 @@ import java.math.BigInteger;
 //      * @category 空间复杂度 0MB 0.00%
 //      * @category 时间复杂度 0ms 0.00%
 //      */
-//     public int TemplateByExpertOne(int param){ 
+//     public int templateByExpertOne(int param){ 
 //         return 2;
 //     }
 // }
