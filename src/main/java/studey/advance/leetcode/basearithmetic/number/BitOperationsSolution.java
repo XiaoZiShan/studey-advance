@@ -18,7 +18,10 @@ public class BitOperationsSolution {
      * @apiNote i++ i-- --i ++i i-1 i+1 都会发生什么， 且有什么不同？
      * @summary  
      */
-    public void questionAnswerByMyTwo(){ 
+    public  void questionAnswerByMyTwo(){ 
+    }
+
+    public static void main(String[] args) {
         
     }
 }
