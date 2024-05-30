@@ -155,24 +155,54 @@ public class BitOperationsSolution {
      * 二进制: 例如，1011 ^ 1100 的结果为 0111。
      * 用途: 用于改变特定的位，如果两个位相同则结果为0，不同则结果为1，这在加密算法和错误检测/校正中很有用。
      */
-    public static void questionAnswerByMyFour(){
-        System.out.println((10 | 4) == 14); // 
-        System.out.println((1535 | 4)); // 
-        System.out.println((42 | 41) ); // 
-        System.out.println((10 | 1312312)); // 
+    public static void questionAnswerByMyFour(){ // 负数等于正数反码加1得到补码
+        // 按位或 |：对应的两个位，如果有一个或多个位为1，则结果位为1。
+        System.out.println(10 | 4);// 01010 | 0100 = 01110 （14） 
+        System.out.println(-1 | 4); // 1111111111111111111111... | 0100 = 1111111111111111111111... (-1) 
+        System.out.println(-4 | 5); // 11111111...111 100 | 0101 = 1111....11111111101 (-3) 
+        System.out.println(4 | 4); // 0100 | 0100 = 0100 （4） 
+        System.out.println(5 | 4); // 0101 | 0100 = 0101 （5） 
 
-        System.out.println(10 & 4);
-        System.out.println(~10);
-        System.out.println(10 ^ 4);
+        // 按位与 &：对应的两个位都为1时，结果位才为1。
+        System.out.println(10 & 4); // 01010 | 0100 = 01010 （10）
+        System.out.println(-1 & 4); // 1111111111111111111111... | 0100 = -1 （same）
+        System.out.println(-4 & 5); // 11111111...111 100 | 0101 = -4  
+        System.out.println(4 & 4);  // 0100 | 0100 = 0100 = 4 （same） 
+        System.out.println(5 & 4);  // 0101 | 0100 = 4  
+        
+        // 按位取反～： 反转操作数的每一位，将所有的1变成0，所有的0变成1。(正负数取反后-1)
+        System.out.println(~-10 == 9);
+        System.out.println(~10 == -11);
+        System.out.println(~901);  // -902
+        System.out.println(~-853); // 852
+        // 按位异或^： 对应的两个位不相同时，结果位为1, 结果相同则为0（即一个位为0而另一个位为1）。
+        System.out.println(10 ^ 4); // 01010 ^ 0100 = 01110 (14)
+        // 0110010001101
+        // ^
+        // 0000000000101
+        // 0110010001000
+        System.out.println(3213 ^ 5); //  0110010001000 (3208)
+        System.out.println(10 ^ -4); // 0...01010 ^ 1....0100 = 1111 11...10110 (-10)
     }
 
     /**
-     * @apiNote  不使用+，使用位运算将两个数字相减加
+     * @apiNote  不使用+，使用位运算将两个数字相减加 https://leetcode.cn/problems/add-binary/description/?envType=study-plan-v2&envId=top-interview-150
      * @summary
      */
     public static int questionAnswerByMyFive(int one, int two){
         while (two != 0) {
             // 计算进位
+            // one = 10 & two = 4
+            // 01010
+            // 00100
+            // 00000 << 1
+            // 00000 = 0 
+
+            // one = 11 & two = 5
+            // 01011
+            // 00101
+            // 00001 << 1
+            // 00010 = 2 
             int carry = (one & two) << 1;
 
             // 执行加法操作，忽略进位
@@ -214,6 +244,7 @@ public class BitOperationsSolution {
 
 
     public static void main(String[] args) {
-        questionAnswerByMyFour();
+        questionAnswerByMyFive(10,4);
+        questionAnswerByMyFive(11,5);
     }
 }
