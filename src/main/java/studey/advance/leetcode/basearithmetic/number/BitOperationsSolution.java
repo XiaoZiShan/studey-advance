@@ -186,7 +186,7 @@ public class BitOperationsSolution {
     }
 
     /**
-     * @apiNote  不使用+，使用位运算将两个数字相减加 https://leetcode.cn/problems/add-binary/description/?envType=study-plan-v2&envId=top-interview-150
+     * @apiNote  不使用+，使用位运算将两个数字相减加
      * @summary
      */
     public static int questionAnswerByMyFive(int one, int two){
@@ -232,14 +232,8 @@ public class BitOperationsSolution {
      * @apiNote  HashMap 中用到了那些位运算的技术？
      * @summary
      */
-    public static int questionAnswerByMySeven(int one, int two){
-        while (two != 0) {
-            // 计算进位
-            int borrow = (~one) & two;
-            one = one ^ two; // 执行减法操作
-            two = borrow << 1; // 将进位左移一位
-        }
-        return one;
+    public void questionAnswerByMySeven(){
+        return;
     }
 
 
